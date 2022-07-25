@@ -1,7 +1,7 @@
 import { publish } from "gh-pages";
 
 const profile = "MariaClaraAmorim";
-const project = "fake-app";
+const project = "clone-twitter";
 const email = "mariaclaraamorim221@gmail.com";
 
 publish(

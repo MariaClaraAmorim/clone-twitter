@@ -1,11 +1,12 @@
 {
-  "name": "react-nubank",
+  "name": "react-Twitter",
   "private": true,
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "trash ./dist; vite build; touch ./dist/.nojekyll; node gh-pages.mjs"
   },
   "dependencies": {
     "react": "^18.0.0",
@@ -18,6 +19,8 @@
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@vitejs/plugin-react": "^1.3.0",
+    "gh-pages": "^4.0.0",
+    "trash": "^8.1.0",
     "vite": "^2.9.9"
   }
 }
