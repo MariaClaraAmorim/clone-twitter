@@ -1,6 +1,8 @@
 import React from "react";
 
-import { AiOutlineRetweet } from "react-icons/ai";
+import { AiOutlineRetweet, AiOutlineHeart } from "react-icons/ai";
+
+import {FaRegComment} from "react-icons/fa";
 
 import {
   Container,
@@ -13,9 +15,6 @@ import {
   ImageContent,
   Icons,
   Status,
-  CommentIcon,
-  RetweetIcon,
-  LikeIcon,
 } from "./styles";
 
 const Tweet: React.FC = () => {
@@ -45,7 +44,7 @@ const Tweet: React.FC = () => {
 
           <Icons>
             <Status>
-              <CommentIcon />
+            <FaRegComment />
               18
             </Status>
             <Status>
@@ -53,7 +52,7 @@ const Tweet: React.FC = () => {
               18
             </Status>
             <Status>
-              <LikeIcon />
+              <AiOutlineHeart /> 
               85
             </Status>
           </Icons>

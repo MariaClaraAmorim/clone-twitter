@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-import { Chat, Favorite } from "../../styles/Icons";
+import { Favorite } from "../../styles/Icons";
 
 export const Container = styled.div`
   display: flex;
@@ -152,21 +152,4 @@ export const Status = styled.div`
   }
 `;
 
-const iconCSS = css`
-  width: 19px;
-  height: 19px;
-`;
 
-export const CommentIcon = styled(Chat)`
-  ${iconCSS}
-`;
-
-export const RetweetIcon = styled.img`
-  ${iconCSS}
-  width: 20px;
-  height: 20px;
-`;
-
-export const LikeIcon = styled(Favorite)`
-  ${iconCSS}
-`;
