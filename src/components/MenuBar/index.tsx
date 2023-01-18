@@ -18,6 +18,8 @@ import {
   ProfileData,
   ExitIcon,
 } from "./styles";
+
+
 const MenuBar: React.FC = () => {
   return (
     <Container>

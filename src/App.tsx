@@ -1,20 +1,22 @@
 import React from "react";
-import LayoutHome from "./components/Layout/LayoutHome";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import GlobalStyles from "./styles/GlobalStyles";
-import LayoutLogin from "./components/Layout/LayoutLogin";
+import Layout from "./components/Layout";
+import Home from "./components/Layout/home";
 
 function App() {
   return (
     <>
       <GlobalStyles />
 
+      {/* <Layout /> */}
+
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LayoutLogin />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/perfil" element={<Layout />} />
 
-          <Route path="/home" element={<LayoutHome />} />
         </Routes>
       </BrowserRouter>
     </>
