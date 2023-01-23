@@ -2,12 +2,13 @@ import React from "react";
 
 import { AiOutlineRetweet, AiOutlineHeart } from "react-icons/ai";
 
-import {FaRegComment} from "react-icons/fa";
+import { FaRegComment } from "react-icons/fa";
 
 import {
   Container,
   Body,
   Avatar,
+  AvatarUser,
   Content,
   Header,
   Dot,
@@ -17,7 +18,7 @@ import {
   Status,
 } from "./styles";
 
-const Tweet: React.FC = () => {
+function Tweet() {
   return (
     <Container>
       <div>
@@ -25,10 +26,8 @@ const Tweet: React.FC = () => {
         Você retweetou
       </div>
 
-
-      
       <Body>
-        <Avatar src="https://avatars.dicebear.com/api/micah/your-custom-seed.svg" />
+        <AvatarUser src="https://avatars.dicebear.com/api/micah/your-custom-seed.svg" />
 
         <Content>
           <Header>
@@ -44,7 +43,7 @@ const Tweet: React.FC = () => {
 
           <Icons>
             <Status>
-            <FaRegComment />
+              <FaRegComment />
               18
             </Status>
             <Status>
@@ -52,7 +51,7 @@ const Tweet: React.FC = () => {
               18
             </Status>
             <Status>
-              <AiOutlineHeart /> 
+              <AiOutlineHeart />
               85
             </Status>
           </Icons>
@@ -60,6 +59,6 @@ const Tweet: React.FC = () => {
       </Body>
     </Container>
   );
-};
+}
 
-export default Tweet;
+export { Tweet };

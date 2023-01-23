@@ -27,9 +27,7 @@ export const Container = styled.div`
   }
 `;
 
-export const BsTwitter = styled.div`
-
-`;
+export const BsTwitter = styled.div``;
 
 export const Topside = styled.div`
   display: flex;
@@ -38,7 +36,8 @@ export const Topside = styled.div`
 
   @media (min-width: 1280px) {
     align-items: flex-start;
-  }
+  }    
+}
 `;
 
 export const MenuButton = styled.button`
@@ -46,12 +45,19 @@ export const MenuButton = styled.button`
   align-items: center;
   flex-shrink: 0;
 
+  // > a {
+  //   text-decoration: none;
+  //   display: none;
+  // }
+
+
+
   > span {
     display: none;
   }
 
   @media (min-width: 1280px) {
-    > span {
+    > span, a {
       display: inline;
       margin-left: 19px;
 

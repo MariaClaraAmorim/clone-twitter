@@ -1,6 +1,6 @@
 import React from "react";
 
-import ProfilePage from '../ProfilePage';
+import {ProfilePage} from '../ProfilePage';
 
 import {
   Container,
@@ -14,7 +14,7 @@ import {
   EmailIcon,
 } from './styles';
 
-const Main: React.FC = () => {
+function Main() {
   return (
     <Container>
       <Header>
@@ -40,4 +40,4 @@ const Main: React.FC = () => {
   );
 };
 
-export default Main;
+export {Main};

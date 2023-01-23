@@ -1,22 +1,20 @@
 import React from "react";
-import MainFeed from "../MainFeed";
-
-import MenuBar from "../MenuBar";
-import SideBar from '../SideBar';
+import { SideBar } from "../SideBar";
+import { MainFeed } from "../MainFeed";
 
 import { Container, Wrapper } from "./styles";
+import { MenuBar } from "../MenuBar";
 
-const Home: React.FC = () => {
+function Home() {
   return (
     <Container>
       <Wrapper>
         <MenuBar />
-
-        <MainFeed/>
+        <MainFeed />
         <SideBar />
       </Wrapper>
     </Container>
   );
-};
+}
 
-export default Home;
+export { Home };

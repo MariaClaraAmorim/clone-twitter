@@ -1,6 +1,6 @@
 import React from "react";
 
-import Feed from "../Feed";
+import { Feed } from "../Feed";
 
 import {
   Container,
@@ -13,7 +13,7 @@ import {
   EditButton,
 } from "./styles";
 
-const ProfilePage: React.FC = () => {
+function ProfilePage() {
   return (
     <Container>
       <Banner>
@@ -53,6 +53,6 @@ const ProfilePage: React.FC = () => {
       <Feed />
     </Container>
   );
-};
+}
 
-export default ProfilePage;
+export { ProfilePage };

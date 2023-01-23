@@ -6,16 +6,15 @@ import { SideBar } from "../SideBar";
 
 import { Container, Wrapper } from "./styles";
 
-function Layout() {
+function Message() {
   return (
     <Container>
       <Wrapper>
         <MenuBar />
-        <Main />
         <SideBar />
       </Wrapper>
     </Container>
   );
 }
 
-export { Layout };
+export { Message };

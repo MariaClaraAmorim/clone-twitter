@@ -19,15 +19,14 @@ import {
   ExitIcon,
 } from "./styles";
 
-
-const MenuBar: React.FC = () => {
+function MenuBar() {
   return (
     <Container>
       <Topside>
+        {/* fill="#33A1F2" */}
         <MenuButton>
-          <BsTwitter fill="#33A1F2" />
+          <BsTwitter />
         </MenuButton>
-
         <MenuButton>
           <HomeIcon />
           <span>Página Inicial</span>
@@ -48,7 +47,8 @@ const MenuBar: React.FC = () => {
           <span>Favoritados</span>
         </MenuButton>
 
-        <MenuButton className="active">
+        {/* className="active" */}
+        <MenuButton>
           <ProfileIcon />
           <span>Perfil</span>
         </MenuButton>
@@ -73,6 +73,6 @@ const MenuBar: React.FC = () => {
       </Botside>
     </Container>
   );
-};
+}
 
-export default MenuBar;
+export { MenuBar };

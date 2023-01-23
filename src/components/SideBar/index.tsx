@@ -2,7 +2,7 @@ import React from "react";
 
 import List from "../List";
 import FollowSuggestion from "../FollowSuggestion";
-import News from "../News";
+import { News } from "../News";
 
 import {
   Container,
@@ -12,7 +12,7 @@ import {
   Body,
 } from "./styles";
 
-const SideBar: React.FC = () => {
+function SideBar() {
   return (
     <Container>
       <SearchWrapper>
@@ -34,15 +34,11 @@ const SideBar: React.FC = () => {
         />
         <List
           title="O que está acontecendo"
-          elements={[
-            <News />,
-            <News />,
-            <News />,
-          ]}
+          elements={[<News />, <News />, <News />]}
         />
       </Body>
     </Container>
   );
-};
+}
 
-export default SideBar;
+export { SideBar };
