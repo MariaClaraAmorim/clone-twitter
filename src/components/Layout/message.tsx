@@ -5,16 +5,19 @@ import { Main } from "../Main";
 import { SideBar } from "../SideBar";
 
 import { Container, Wrapper } from "./styles";
+import { Message } from "../Message";
+import { SpanMessage } from "../SpanMessage";
 
-function Message() {
+function LayoutMessage() {
   return (
     <Container>
       <Wrapper>
         <MenuBar />
-        <SideBar />
+        <Message/>
+        <SpanMessage />
       </Wrapper>
     </Container>
   );
 }
 
-export { Message };
+export { LayoutMessage };
