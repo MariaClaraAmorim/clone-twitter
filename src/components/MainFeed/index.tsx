@@ -45,14 +45,12 @@ function MainFeed({ body, userId, id }: Post) {
       </Header>
       <Profile>
         <Avatar
-          src={"https://avatars.dicebear.com/api/open-peeps/" + userId + ".svg"}
+          src="https://avatars.dicebear.com/api/micah/your-custom-seed.svg"
           alt="Imagem avatar"
         />
         <SearchWrapper>
           <SearchInput placeholder="O que está acontecendo?" />
         </SearchWrapper>
-        <div>
-        </div>
       </Profile>
 
       {posts.map((post) => {
