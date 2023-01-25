@@ -38,7 +38,6 @@ function MainFeed({ body, userId, id }: Post) {
             <Ul>
               <li>Para você</li>
               <li>Seguindo</li>
-              {/* <Span></Span> */}
             </Ul>
           </nav>
         </ProfileInfo>

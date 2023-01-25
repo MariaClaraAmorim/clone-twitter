@@ -9,6 +9,7 @@
     "deploy": "trash ./dist; vite build; touch ./dist/.nojekyll; node gh-pages.mjs"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.7",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-icons": "^4.4.0",

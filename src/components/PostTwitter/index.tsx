@@ -1,23 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlineHeart, AiOutlineRetweet } from "react-icons/ai";
 import { FaRegComment } from "react-icons/fa";
+import { InterfacePerfil } from "../../common/interface/InterfacePerfil";
 import { Post } from "../../common/interface/Post";
 import { Avatar } from "../MainFeed/styles";
 import {
-  Body,
-  HeaderInfo,
-  Content,
-  Dot,
-  Description,
-  ImageContent,
-  Icons,
-  Status,
+  Body, Content, Description, Dot, HeaderInfo, Icons, ImageContent, Status
 } from "./styles";
 
-
 function PostTwitter({ body, userId, id }: Post) {
-  // const [users, setUsers] = useState<InterfacePerfil>();
-
   const [users, setUsers] = useState<InterfacePerfil>();
   const urlImageUser =
     "https://avatars.dicebear.com/api/open-peeps/" + userId + ".svg";
@@ -33,24 +24,26 @@ function PostTwitter({ body, userId, id }: Post) {
   useEffect(() => {
     getInfoUser();
   }, []);
+
+  const thumbnailUrl = "https://via.placeholder.com/150/";
+
   return (
     <Body>
-      <Avatar
-        src={"https://avatars.dicebear.com/api/open-peeps/" + userId + ".svg"}
-        alt="Imagem avatar"
-      />
+      <a href={"/perfilusuario/" + userId}>
+        <Avatar src={urlImageUser} alt="Imagem avatar" />
+      </a>
 
       <Content>
         <HeaderInfo>
           <strong>{users?.name}</strong>
-          <span>@Fulano</span>
+          <span>{users?.email}</span>
           <Dot />
           <time>23 jan</time>
         </HeaderInfo>
 
         <Description> {body} </Description>
 
-        <ImageContent src="https://www.gerarmemes.com.br/uploads/galeria/meme-611-meme-pica-pau-cataratas-gerador-de-memes.jpg" />
+        <ImageContent src={thumbnailUrl} />
 
         <Icons>
           <Status>
