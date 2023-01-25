@@ -89,9 +89,6 @@ export const ImageContent = styled.img`
 export const HeaderInfo = styled.div`
   display: flex;
   justify-content : space-evenly;
-  // align-items: flex-start;
-  // place-content: center;
-  // white-space: nowrap;
   margin-top: 1rem;
   gap: 0.4rem;
 

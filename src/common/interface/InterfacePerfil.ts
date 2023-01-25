@@ -5,6 +5,9 @@ interface InterfacePerfil {
   userId: number;
   email: string;
   name: string;
+  street: string;
+  city: string;
+  zipcode: number;
 }
 
 export { InterfacePerfil };
