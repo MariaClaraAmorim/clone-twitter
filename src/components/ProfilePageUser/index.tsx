@@ -5,6 +5,7 @@ import { InterfacePerfil } from "../../common/interface/InterfacePerfil";
 import { Post } from "../../common/interface/Post";
 
 import { Feed } from "../Feed";
+import { PostMessage } from "../PostMessage";
 
 import {
   Container,
@@ -17,6 +18,17 @@ import {
 } from "./styles";
 
 function ProfilePageUser({ userId }: Post) {
+  const [posts, setPosts] = useState<Post[]>([]);
+
+  async function getPosts() {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+
+    setPosts(await response.json());
+  }
+
+  useEffect(() => {
+    getPosts();
+  }, []);
   const [users, setUsers] = useState<InterfacePerfil>();
 
   const urlImageUser =
@@ -36,7 +48,10 @@ function ProfilePageUser({ userId }: Post) {
   return (
     <Container>
       <Banner>
-        <Avatar src={urlImageUser} alt="Imagem avatar" />
+        <Avatar
+          src={"https://avatars.dicebear.com/api/open-peeps/" + userId + ".svg"}
+          alt="Imagem avatar"
+        />
       </Banner>
 
       <ProfileData>
@@ -64,6 +79,10 @@ function ProfilePageUser({ userId }: Post) {
           </span>
         </Followage>
       </ProfileData>
+
+      {posts.map((post) => {
+        return <PostMessage {...post} />;
+      })}
 
       {/* <Feed /> */}
     </Container>

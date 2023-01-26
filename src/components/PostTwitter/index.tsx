@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlineHeart, AiOutlineRetweet } from "react-icons/ai";
 import { FaRegComment } from "react-icons/fa";
+import { FcLike } from "react-icons/fc";
+
 import { InterfacePerfil } from "../../common/interface/InterfacePerfil";
 import { Post } from "../../common/interface/Post";
 import { Avatar } from "../MainFeed/styles";
 import {
-  Body, Content, Description, Dot, HeaderInfo, Icons, ImageContent, Status
+  Body,
+  Content,
+  Description,
+  Dot,
+  HeaderInfo,
+  Icons,
+  ImageContent,
+  Status,
 } from "./styles";
 
 function PostTwitter({ body, userId, id }: Post) {
@@ -26,6 +35,11 @@ function PostTwitter({ body, userId, id }: Post) {
   }, []);
 
   const thumbnailUrl = "https://via.placeholder.com/150/";
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openMenu = () => setIsOpen(true);
+  const closeMenu = () => setIsOpen(false);
 
   return (
     <Body>
@@ -54,7 +68,9 @@ function PostTwitter({ body, userId, id }: Post) {
             16
           </Status>
           <Status>
-            <AiOutlineHeart />
+            <button onClick={openMenu}>
+              {isOpen ? <FcLike /> : <AiOutlineHeart onClick={closeMenu} />}
+            </button>
             57
           </Status>
         </Icons>
