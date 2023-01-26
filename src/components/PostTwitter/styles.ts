@@ -118,3 +118,8 @@ export const Status = styled.div`
     }
   }
 `;
+
+
+// export const AiFillHeart = styled(AiFillHeart)`
+// fill: var(--like);
+// `;
