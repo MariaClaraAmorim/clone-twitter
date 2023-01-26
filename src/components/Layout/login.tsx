@@ -3,9 +3,9 @@ import React from "react";
 import { Container } from "./styles";
 
 import { Loading } from "../isLoading";
-import Login from "../Login";
 import { useState } from "react";
 import { useEffect } from "react";
+import { LoginGoogle } from "../Login";
 
 function LoadingBackdrop() {
   const [isLoading, setIsLoading] = useState(true);
@@ -35,7 +35,7 @@ function LayoutLogin() {
   return (
     <Container>
       <LoadingBackdrop/>
-      <Login />
+      <LoginGoogle />
     </Container>
   );
 }

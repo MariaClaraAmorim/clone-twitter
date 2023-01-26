@@ -2,15 +2,13 @@ import React from "react";
 
 import { Container } from "./styles";
 
-import Signup from "../Signup";
-import { AuthProvider } from "../../contexts/auth";
+import { LoginGoogle } from "../Login";
 function LayoutSignup() {
   return (
-    <AuthProvider>
       <Container>
-        <Signup />
+        <LoginGoogle />
+
       </Container>
-    </AuthProvider>
   );
 }
 
