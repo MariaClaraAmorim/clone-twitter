@@ -1,51 +1,3 @@
-// import styled from "styled-components";
-
-// export const Container = styled.div`
-//   background-color: #25363c;
-//   padding: 10px;
-//   display: flex;
-//   align-items: center;
-//   margin-top: 20px;
-// `;
-
-// export const IconUser = styled.div`
-//   flex-shrink: 0;
-//   width: 60px;
-//   border: 1px solid #25363c;
-//   border-radius: 50%;
-// `;
-
-// export const IconeUser = styled.img`
-//   width: 10%;
-//   border: 1px solid;
-//   border-radius: 50%;
-//   display: flex;
-//   justify-content: center;
-// `;
-
-// export const Nome = styled.div`
-//   color: #fcfcfc;
-// `;
-// export const Texto = styled.div`
-//   color: #fcfcfc;
-//   font-style: oblique;
-// `;
-// export const PostList = styled.div``;
-
-// export const Titulos = styled.div`
-//   display: flex;
-//   justify-content: center;
-// `;
-
-// export const Infos = styled.div`
-//   font-size: 20px;
-//   padding: 15px;
-
-//   > a {
-//     text-decoration: none;
-//   }
-// `;
-
 
 import styled, { css } from "styled-components";
 
@@ -65,16 +17,6 @@ export const Retweeted = styled.img`
   font-size: 13px;
   color: var(--gray);
 `;
-// export const RocketseatIcon = styled.img`
-//   width: 16px;
-//   height: 16px;
-//   margin-left: 35px;
-//   margin-right: 9px;
-
-//   > path {
-//     fill: var(--gray);
-//   }
-// `;
 
 export const Body = styled.div`
   display: flex;
@@ -201,7 +143,6 @@ export const Status = styled.div`
   }
 `;
 
-
 export const AvatarUser = styled.img`
   width: 49px;
   height: 49px;
@@ -212,4 +153,3 @@ export const AvatarUser = styled.img`
   top: 0;
   left: 0;
 `;
-
