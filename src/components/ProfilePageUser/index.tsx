@@ -1,23 +1,18 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { InterfacePerfil } from "../../common/interface/InterfacePerfil";
 import { Post } from "../../common/interface/Post";
 
-import { Feed } from "../Feed";
-import { PostMessage } from "../PostMessage";
-
 import {
-  Container,
-  Banner,
   Avatar,
-  ProfileData,
-  LocationIcon,
+  Banner,
   CakeIcon,
+  Container,
   Followage,
+  LocationIcon,
+  ProfileData,
 } from "./styles";
 
-function ProfilePageUser({ userId }: Post) {
+function ProfilePageUser({ userId, body }: Post) {
   const [posts, setPosts] = useState<Post[]>([]);
 
   async function getPosts() {
@@ -29,10 +24,8 @@ function ProfilePageUser({ userId }: Post) {
   useEffect(() => {
     getPosts();
   }, []);
-  const [users, setUsers] = useState<InterfacePerfil>();
 
-  const urlImageUser =
-    "https://avatars.dicebear.com/api/open-peeps/" + userId + ".svg";
+  const [users, setUsers] = useState<InterfacePerfil>();
 
   async function getInfoUser() {
     const response = await fetch(
@@ -45,6 +38,7 @@ function ProfilePageUser({ userId }: Post) {
   useEffect(() => {
     getInfoUser();
   }, []);
+
   return (
     <Container>
       <Banner>
@@ -55,14 +49,14 @@ function ProfilePageUser({ userId }: Post) {
       </Banner>
 
       <ProfileData>
-        <h1></h1>
-        <h2></h2>
+        <h1>{users?.name}</h1>
+
+        <strong>{body}</strong>
 
         <ul>
           <li>
             <LocationIcon />
-            {users?.street}
-            <strong>{users?.name}</strong>
+            Barreiras, Bahia
           </li>
           <li>
             <CakeIcon />
@@ -80,9 +74,9 @@ function ProfilePageUser({ userId }: Post) {
         </Followage>
       </ProfileData>
 
-      {posts.map((post) => {
+      {/* {posts.map((post) => {
         return <PostMessage {...post} />;
-      })}
+      })} */}
 
       {/* <Feed /> */}
     </Container>

@@ -1,7 +1,6 @@
-import React from "react";
 
-import { MenuBar } from "../MenuBar";
 import { Main } from "../Main";
+import { MenuBar } from "../MenuBar";
 import { SideBar } from "../SideBar";
 
 import { Container, Wrapper } from "./styles";

@@ -1,3 +1,4 @@
+import { useUserContext } from "@contexts/UserContext";
 import React from "react";
 
 import { Feed } from "../Feed";
@@ -14,20 +15,19 @@ import {
 } from "./styles";
 
 function ProfilePage() {
+  const { user } = useUserContext();
+
   return (
     <Container>
       <Banner>
-        <Avatar
-          src="https://avatars.dicebear.com/api/micah/your-custom-seed.svg"
-          alt=""
-        />
+        <Avatar src={`${user?.photoURL}`} alt={`${user?.name}`} />
       </Banner>
 
       <ProfileData>
         <EditButton outlined>Editar perfil</EditButton>
 
-        <h1>Maria Clara</h1>
-        <h2>@Kal</h2>
+        <h1>{user?.name}</h1>
+        <h2>{user?.userName}</h2>
 
         <ul>
           <li>

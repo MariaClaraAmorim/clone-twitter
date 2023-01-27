@@ -34,7 +34,7 @@ function PostTwitter({ body, userId, id }: Post) {
     getInfoUser();
   }, []);
 
-  const thumbnailUrl = "https://via.placeholder.com/150/";
+  const thumbnailUrl = "https://via.placeholder.com/150";
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -43,8 +43,11 @@ function PostTwitter({ body, userId, id }: Post) {
 
   return (
     <Body>
-      <a href={"/perfilusuario/" + userId}>
-        <Avatar src={urlImageUser} alt="Imagem avatar" />
+      <a href={"/user/" + userId}>
+        <Avatar
+          src={"https://avatars.dicebear.com/api/open-peeps/" + userId + ".svg"}
+          alt="Imagem avatar"
+        />
       </a>
 
       <Content>

@@ -1,4 +1,5 @@
 import React from "react";
+import { ExploreBanner } from "../ExploreBanner";
 import { ExploreCard } from "../ExploreCard";
 
 import {
@@ -29,7 +30,8 @@ function Explore() {
             </Ul>
           </nav>
         </Header>
-        <ExploreCard />
+
+        <ExploreBanner />
         <ExploreCard />
       </Container>
     </>

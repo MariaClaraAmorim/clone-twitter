@@ -1,3 +1,4 @@
+import { useUserContext } from "@contexts/UserContext";
 import React from "react";
 
 import { AiOutlineRetweet, AiOutlineHeart } from "react-icons/ai";
@@ -19,6 +20,8 @@ import {
 } from "./styles";
 
 function Tweet() {
+  const { user } = useUserContext();
+
   return (
     <Container>
       <div>
@@ -27,12 +30,12 @@ function Tweet() {
       </div>
 
       <Body>
-        <AvatarUser src="https://avatars.dicebear.com/api/micah/your-custom-seed.svg" />
+        <AvatarUser src={`${user?.photoURL}`} />
 
         <Content>
           <Header>
-            <strong>Maria Clara Amorim</strong>
-            <span>@Kal</span>
+            <strong>{user?.name}</strong>
+            <span>{user?.userName}</span>
             <Dot />
             <time>02 de jun</time>
           </Header>

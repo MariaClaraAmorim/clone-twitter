@@ -18,8 +18,11 @@ import {
   ProfileData,
   ExitIcon,
 } from "./styles";
+import { useUserContext } from "@contexts/UserContext";
 
 function MenuBar() {
+  const { user, signOut } = useUserContext();
+
   return (
     <Container>
       <Topside>
@@ -59,17 +62,14 @@ function MenuBar() {
       </Topside>
 
       <Botside>
-        <Avatar
-          src="https://avatars.dicebear.com/api/micah/your-custom-seed.svg"
-          alt=""
-        />
+        <Avatar src={`${user?.photoURL}`} alt={`${user?.name}`} />
 
         <ProfileData>
-          <strong>Maria</strong>
-          <span>@Kal</span>
+          <strong>{user?.name}</strong>
+          <span>{user?.userName}</span>
         </ProfileData>
 
-        <ExitIcon />
+        <ExitIcon onClick={signOut} />
       </Botside>
     </Container>
   );

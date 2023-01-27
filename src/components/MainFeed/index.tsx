@@ -1,3 +1,4 @@
+import { useUserContext } from "@contexts/UserContext";
 import React, { useEffect, useState } from "react";
 import { Post } from "../../common/interface/Post";
 import { PostTwitter } from "../PostTwitter";
@@ -18,6 +19,7 @@ import {
 } from "./styles";
 
 function MainFeed({ body, userId, id }: Post) {
+  const { user } = useUserContext();
   const [posts, setPosts] = useState<Post[]>([]);
 
   async function getPosts() {
@@ -29,6 +31,7 @@ function MainFeed({ body, userId, id }: Post) {
   useEffect(() => {
     getPosts();
   }, []);
+
   return (
     <Container>
       <Header>
@@ -43,17 +46,14 @@ function MainFeed({ body, userId, id }: Post) {
         </ProfileInfo>
       </Header>
       <Profile>
-        <Avatar
-          src="https://avatars.dicebear.com/api/micah/your-custom-seed.svg"
-          alt="Imagem avatar"
-        />
+        <Avatar src={`${user?.photoURL}`} alt="Imagem avatar" />
         <SearchWrapper>
           <SearchInput placeholder="O que está acontecendo?" />
         </SearchWrapper>
       </Profile>
 
-      {posts.map((post) => {
-        return <PostTwitter {...post} />;
+      {posts.map((post, index) => {
+        return <PostTwitter key={index} {...post} />;
       })}
 
       <BottomMenu>
