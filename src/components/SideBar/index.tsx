@@ -2,7 +2,6 @@ import React from "react";
 
 import List from "../List";
 import FollowSuggestion from "../FollowSuggestion";
-import { News } from "../News";
 
 import {
   Container,
@@ -11,6 +10,7 @@ import {
   SearchIcon,
   Body,
 } from "./styles";
+import { News } from "@components/News";
 
 function SideBar() {
   return (
@@ -34,8 +34,8 @@ function SideBar() {
         />
         <List
           title="O que está acontecendo"
-          elements={[<News />, <News />, <News />]}
-        />
+          elements={[<News />]}
+        />  
       </Body>
     </Container>
   );
