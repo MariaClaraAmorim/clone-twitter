@@ -5,8 +5,13 @@ export const Container = styled.div``;
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 1rem;
-  gap: 0.4rem;
+  text-align: start;
+  word-break: break-word;
+  margin: 10px 10px 20px;
+  box-shadow: 1px 1px 1px 2px gray;
+  gap: 5px;
+  border-radius: 10px;
+  padding: 10px;
 `;
 
 export const Dot = styled.div`
@@ -14,4 +19,11 @@ export const Dot = styled.div`
   width: 2px;
   height: 2px;
   margin: 0 10px;
+`;
+
+export const Box = styled.div`
+  display: flex;
+  align-items: center;
+  word-break: break-word;
+  gap: 1rem;
 `;

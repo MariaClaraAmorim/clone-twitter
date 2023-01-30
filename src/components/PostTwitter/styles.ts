@@ -1,4 +1,5 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
+
 
 export const Body = styled.div`
   display: flex;
@@ -93,6 +94,7 @@ export const Status = styled.div`
 
   font-size: 14px;
 
+
   > svg {
     margin-right: 5px;
   }
@@ -120,6 +122,6 @@ export const Status = styled.div`
 `;
 
 
-// export const AiFillHeart = styled(AiFillHeart)`
+// export const FavoriteBorder = styled()`
 // fill: var(--like);
 // `;

@@ -2,7 +2,6 @@ export {
   Home,
   Notifications,
   Email,
-  FavoriteBorder,
   ExitToApp,
   LocationOn,
   Search,
@@ -10,4 +9,3 @@ export {
 export { Person, Cake, Favorite } from "styled-icons/material";
 export { ArrowLeft } from "styled-icons/heroicons-solid";
 
-export { AiFillHeart } from "react-icons/ai";

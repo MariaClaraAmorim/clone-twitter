@@ -1,6 +1,4 @@
-
-  
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
   * {
@@ -35,5 +33,17 @@ export default createGlobalStyle`
     --twitter: #33A1F2;
     --twitter-dark-hover: #011017;
     --twitter-light-hover: #2C8ED6;
+  }
+ 
+  a{
+    text-decoration: none;
+  }
+
+  textarea{
+    border: 0;
+    font-size: 1.4rem;
+    width: 100%;
+    border-radius: 19.5px;
+    resize: none;
   }
 `;

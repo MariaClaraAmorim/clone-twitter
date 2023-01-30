@@ -283,3 +283,8 @@ export const BellIcon = styled(Notifications)`
 export const EmailIcon = styled(Email)`
   ${iconCSS}
 `;
+
+export const Box = styled.div`
+  display: flex;
+  gap:1rem;
+`;

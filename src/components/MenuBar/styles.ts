@@ -7,6 +7,7 @@ import {
   FavoriteBorder,
   Person,
   ExitToApp,
+  Search,
 } from "../../styles/Icons";
 
 export const Container = styled.div`
@@ -33,7 +34,7 @@ export const Topside = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  gap: 1rem;
   @media (min-width: 1280px) {
     align-items: flex-start;
   }    
@@ -50,14 +51,13 @@ export const MenuButton = styled.button`
   //   display: none;
   // }
 
-
-
   > span {
     display: none;
   }
 
   @media (min-width: 1280px) {
-    > span, a {
+    > span,
+    a {
       display: inline;
       margin-left: 19px;
 
@@ -185,5 +185,15 @@ export const ExitIcon = styled(ExitToApp)`
         color: var(--like);
       }
     }
+  }
+`;
+
+export const SearchIcon = styled(Search)`
+  width: 30px;
+  height: 30px;
+  font-size: 14px;
+
+  > span {
+    color: var(--gray);
   }
 `;
