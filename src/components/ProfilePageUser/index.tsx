@@ -53,7 +53,7 @@ function ProfilePageUser({ userId, body }: Post) {
 
         <strong>{body}</strong>
 
-        <ul>
+        {/* <ul>
           <li>
             <LocationIcon />
             Barreiras, Bahia
@@ -62,7 +62,7 @@ function ProfilePageUser({ userId, body }: Post) {
             <CakeIcon />
             Nascido(a) em 22 de novembro de 2002
           </li>
-        </ul>
+        </ul> */}
 
         <Followage>
           <span>
@@ -73,12 +73,6 @@ function ProfilePageUser({ userId, body }: Post) {
           </span>
         </Followage>
       </ProfileData>
-
-      {/* {posts.map((post) => {
-        return <PostMessage {...post} />;
-      })} */}
-
-      {/* <Feed /> */}
     </Container>
   );
 }

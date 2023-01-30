@@ -29,7 +29,7 @@ function ProfilePage() {
         <h1>{user?.name}</h1>
         <h2>{user?.userName}</h2>
 
-        <ul>
+        {/* <ul>
           <li>
             <LocationIcon />
             Barreiras, Brasil
@@ -38,7 +38,7 @@ function ProfilePage() {
             <CakeIcon />
             Nascido(a) em 22 de novembro de 2002
           </li>
-        </ul>
+        </ul> */}
 
         <Followage>
           <span>

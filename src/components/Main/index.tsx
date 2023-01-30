@@ -22,10 +22,9 @@ function Main() {
     <Container>
       <Header>
         <a href="/home">
-
-        <button>
-          <BackIcon />
-        </button>
+          <button>
+            <BackIcon />
+          </button>
         </a>
 
         <ProfileInfo>
@@ -37,10 +36,21 @@ function Main() {
       <ProfilePage />
 
       <BottomMenu>
-        <HomeIcon className="active" />
-        <SearchIcon />
-        <BellIcon />
-        <EmailIcon />
+        <a href="/home">
+          <HomeIcon />
+        </a>
+
+        <a href="/explore">
+          <SearchIcon />
+        </a>
+
+        <a href="/profile">
+          <BellIcon />
+        </a>
+        
+        <a href="/message">
+          <EmailIcon />
+        </a>
       </BottomMenu>
     </Container>
   );

@@ -1,3 +1,4 @@
+import { BellIcon, BottomMenu, EmailIcon, HomeIcon, SearchIcon } from "@components/Main/styles";
 import React from "react";
 import { ExploreBanner } from "../ExploreBanner";
 import { ExploreCard } from "../ExploreCard";
@@ -33,6 +34,24 @@ function Explore() {
 
         <ExploreBanner />
         <ExploreCard />
+
+        <BottomMenu>
+        <a href="/home">
+          <HomeIcon  />
+        </a>
+
+        <a href="/explore">
+          <SearchIcon />
+        </a>
+
+        <a href="/profile">
+          <BellIcon />
+        </a>
+        
+        <a href="/message">
+          <EmailIcon />
+        </a>
+      </BottomMenu>
       </Container>
     </>
   );

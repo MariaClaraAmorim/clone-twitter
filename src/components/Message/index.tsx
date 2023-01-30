@@ -1,3 +1,4 @@
+import { BellIcon, BottomMenu, EmailIcon, HomeIcon, SearchIcon } from "@components/Main/styles";
 import React from "react";
 
 import {
@@ -90,6 +91,24 @@ function Message() {
             <Description> enviou um link </Description>
           </div>
         </Content>
+
+        <BottomMenu>
+        <a href="/home">
+          <HomeIcon />
+        </a>
+
+        <a href="/explore">
+          <SearchIcon />
+        </a>
+
+        <a href="/profile">
+          <BellIcon />
+        </a>
+        
+        <a href="/message">
+          <EmailIcon />
+        </a>
+      </BottomMenu>
       </Container>
     </>
   );

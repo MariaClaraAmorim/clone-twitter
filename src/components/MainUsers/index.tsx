@@ -76,11 +76,22 @@ function MainUsers() {
         return <PostMessage {...post} />;
       })}
 
-      <BottomMenu>
-        <HomeIcon className="active" />
-        <SearchIcon />
-        <BellIcon />
-        <EmailIcon />
+<BottomMenu>
+        <a href="/home">
+          <HomeIcon />
+        </a>
+
+        <a href="/explore">
+          <SearchIcon />
+        </a>
+
+        <a href="/profile">
+          <BellIcon />
+        </a>
+        
+        <a href="/message">
+          <EmailIcon />
+        </a>
       </BottomMenu>
     </Container>
   );
