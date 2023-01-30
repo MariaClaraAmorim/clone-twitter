@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBDXJWf5aHhqgXzSRLJyohw9j0y1VsDGQ8",
@@ -8,9 +9,11 @@ const firebaseConfig = {
   storageBucket: "clone-twitter-9e0b1.appspot.com",
   messagingSenderId: "773555433470",
   appId: "1:773555433470:web:38e82fe818617995a41aaf",
-  measurementId: "G-358ZBHMT1S"
+  measurementId: "G-358ZBHMT1S",
 };
 
 const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
+
+export const db = getFirestore(app);
