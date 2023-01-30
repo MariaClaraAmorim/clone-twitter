@@ -4,7 +4,6 @@ import {
   Home,
   Notifications,
   Email,
-  FavoriteBorder,
   Person,
   ExitToApp,
   Search,
@@ -127,9 +126,6 @@ export const BellIcon = styled(Notifications)`
   ${iconCSS}
 `;
 export const EmailIcon = styled(Email)`
-  ${iconCSS}
-`;
-export const FavoriteIcon = styled(FavoriteBorder)`
   ${iconCSS}
 `;
 export const ProfileIcon = styled(Person)`

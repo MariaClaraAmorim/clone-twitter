@@ -120,8 +120,3 @@ export const Status = styled.div`
     }
   }
 `;
-
-
-// export const FavoriteBorder = styled()`
-// fill: var(--like);
-// `;
