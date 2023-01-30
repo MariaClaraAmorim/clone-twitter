@@ -1,24 +1,28 @@
+import Button from "@components/Button";
 import { useUserContext } from "@contexts/UserContext";
-import React, { useEffect, useState } from "react";
+import { sendTweet } from "@services/tweets";
+import {
+  FormEvent,
+  SetStateAction,
+  useEffect,
+  useState
+} from "react";
 import { Post } from "../../common/interface/Post";
 import { PostTwitter } from "../PostTwitter";
 import {
   Avatar,
-  Container,
+  BellIcon,
+  BottomMenu, Box, Container,
+  EmailIcon,
   Header,
+  HomeIcon,
   Profile,
   ProfileInfo,
-  SearchInput,
-  SearchWrapper,
-  Ul,
-  BottomMenu,
-  HomeIcon,
-  SearchIcon,
-  BellIcon,
-  EmailIcon,
+  SearchIcon, SearchWrapper,
+  Ul
 } from "./styles";
 
-function MainFeed({ body, userId, id }: Post) {
+function MainFeed() {
   const { user } = useUserContext();
   const [posts, setPosts] = useState<Post[]>([]);
 
@@ -31,6 +35,28 @@ function MainFeed({ body, userId, id }: Post) {
   useEffect(() => {
     getPosts();
   }, []);
+
+  const [editorValue, setEditorValue] = useState("");
+
+  const handleEditorValueChange = (e: {
+    target: { value: SetStateAction<string> };
+  }) => {
+    setEditorValue(e.target.value);
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+
+    const tweetFormValue = formData.get("tweet");
+
+    if (!tweetFormValue) return;
+
+    await sendTweet({
+      text: tweetFormValue.toString(),
+    });
+  };
 
   return (
     <Container>
@@ -46,12 +72,17 @@ function MainFeed({ body, userId, id }: Post) {
         </ProfileInfo>
       </Header>
       <Profile>
-        <Avatar src={`${user?.photoURL}`} alt="Imagem avatar" />
-        <SearchWrapper>
-          <SearchInput placeholder="O que está acontecendo?" />
-        </SearchWrapper>
+        <form className="compose-form" onSubmit={handleSubmit}>
+          <Box>
+            <Avatar src={`${user?.photoURL}`} alt="Imagem avatar" />
+            <SearchWrapper>
+              <textarea name="tweet" placeholder="O que está acontecendo?" />
+            </SearchWrapper>
+          </Box>
+          <Button type="submit">Tweetar</Button>
+        </form>
       </Profile>
-
+   
       {posts.map((post, index) => {
         return <PostTwitter key={index} {...post} />;
       })}
