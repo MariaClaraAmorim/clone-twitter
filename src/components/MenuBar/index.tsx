@@ -11,7 +11,7 @@ import {
   HomeIcon,
   BellIcon,
   EmailIcon,
-  FavoriteIcon,
+  // FavoriteIcon,
   ProfileIcon,
   Botside,
   Avatar,
@@ -43,7 +43,7 @@ function MenuBar() {
 
         <a href="/explore">
           <MenuButton>
-          <SearchIcon />
+            <SearchIcon />
             <span>Explore</span>
           </MenuButton>
         </a>
@@ -62,14 +62,13 @@ function MenuBar() {
           </MenuButton>
         </a>
 
-
-        
-        <a href="">
+        {/*   <a href="">
           <MenuButton>
-            <FavoriteIcon />
+           <FavoriteIcon /> 
             <span>Favoritados</span>
           </MenuButton>
-        </a>
+        </a>*/}
+
         {/* className="active" */}
         <a href="/profile">
           <MenuButton>
