@@ -36,10 +36,8 @@ function PostTwitter({ body, userId, id }: Post) {
 
   const thumbnailUrl = "https://via.placeholder.com/150";
 
-  const [isOpen, setIsOpen] = useState(false);
-
-  const openMenu = () => setIsOpen(true);
-  const closeMenu = () => setIsOpen(false);
+  const [isLiked, setIsLiked] = useState(false);
+  const [isRetweeted, setIsRetweeted] = useState(false);
 
   return (
     <Body>
@@ -57,26 +55,31 @@ function PostTwitter({ body, userId, id }: Post) {
           <Dot />
           <time>23 jan</time>
         </HeaderInfo>
-
         <Description> {body} </Description>
-
         <ImageContent src={thumbnailUrl} />
-
         <Icons>
           <Status>
-            <FaRegComment />9
+            <FaRegComment />
           </Status>
+
           <Status>
-            <AiOutlineRetweet />
-            16
-          </Status>
-          <Status>
-            <button onClick={openMenu}>
-              {isOpen ? <FcLike /> : <AiOutlineHeart onClick={closeMenu} />}
+            <button onClick={() => setIsRetweeted((state) => !state)}>
+              {isRetweeted ? (
+                <AiOutlineRetweet fill="var(--retweet)" />
+              ) : (
+                <AiOutlineRetweet />
+              )}
+              {isRetweeted ? 1 : ""}
             </button>
-            57
           </Status>
-        </Icons>
+
+          <Status>
+            <button onClick={() => setIsLiked((state) => !state)}>
+              {isLiked ? <FcLike /> : <AiOutlineHeart />}
+              {isLiked ? 1 : ""}
+            </button>
+          </Status>
+        </Icons>{" "}
       </Content>
     </Body>
   );

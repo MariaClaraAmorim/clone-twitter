@@ -1,9 +1,10 @@
 import { useUserContext } from "@contexts/UserContext";
-import React from "react";
+import React, { useState } from "react";
 
 import { AiOutlineRetweet, AiOutlineHeart } from "react-icons/ai";
 
 import { FaRegComment } from "react-icons/fa";
+import { FcLike } from "react-icons/fc";
 
 import {
   Container,
@@ -21,6 +22,9 @@ import {
 
 function Tweet() {
   const { user } = useUserContext();
+
+  const [isLiked, setIsLiked] = useState(false);
+  const [isRetweeted, setIsRetweeted] = useState(false);
 
   return (
     <Container>
@@ -50,12 +54,22 @@ function Tweet() {
               18
             </Status>
             <Status>
-              <AiOutlineRetweet />
-              18
+
+              <button onClick={() => setIsRetweeted((state) => !state)}>
+                {isRetweeted ? (
+                  <AiOutlineRetweet fill="var(--retweet)" />
+                ) : (
+                  <AiOutlineRetweet />
+                )}
+                {isRetweeted ? 1 : ""}
+              </button>
             </Status>
+
             <Status>
-              <AiOutlineHeart />
-              85
+              <button onClick={() => setIsLiked((state) => !state)}>
+                {isLiked ? <FcLike /> : <AiOutlineHeart />}
+                {isLiked ? 1 : ""}
+              </button>
             </Status>
           </Icons>
         </Content>

@@ -19,6 +19,7 @@ import {
 } from "./styles";
 import { AiOutlineHeart, AiOutlineRetweet } from "react-icons/ai";
 import { FaRegComment } from "react-icons/fa";
+import { FcLike } from "react-icons/fc";
 
 function PostMessage({ body, userId, id }: Post) {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -47,6 +48,10 @@ function PostMessage({ body, userId, id }: Post) {
     getInfoUser();
   }, []);
 
+  const [isLiked, setIsLiked] = useState(false);
+  const [isRetweeted, setIsRetweeted] = useState(false);
+
+  
   return (
     <Container>
       <div>
@@ -78,13 +83,22 @@ function PostMessage({ body, userId, id }: Post) {
               18
             </Status>
             <Status>
-              <AiOutlineRetweet />
-              18
-            </Status>
-            <Status>
-              <AiOutlineHeart />
-              85
-            </Status>
+            <button onClick={() => setIsRetweeted((state) => !state)}>
+              {isRetweeted ? (
+                <AiOutlineRetweet fill="var(--retweet)" />
+              ) : (
+                <AiOutlineRetweet />
+              )}
+              {isRetweeted ? 1 : ""}
+            </button>
+          </Status>
+
+          <Status>
+            <button onClick={() => setIsLiked((state) => !state)}>
+              {isLiked ? <FcLike /> : <AiOutlineHeart />}
+              {isLiked ? 1 : ""}
+            </button>
+          </Status>
           </Icons>
         </Content>
       </Body>
