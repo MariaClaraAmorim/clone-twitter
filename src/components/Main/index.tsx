@@ -1,6 +1,7 @@
+import { useUserContext } from "@contexts/UserContext";
 import React from "react";
 
-import {ProfilePage} from '../ProfilePage';
+import { ProfilePage } from "../ProfilePage";
 
 import {
   Container,
@@ -12,19 +13,24 @@ import {
   SearchIcon,
   BellIcon,
   EmailIcon,
-} from './styles';
+} from "./styles";
 
 function Main() {
+  const { user } = useUserContext();
+
   return (
     <Container>
       <Header>
+        <a href="/home">
+
         <button>
           <BackIcon />
         </button>
+        </a>
 
         <ProfileInfo>
-          <strong> Maria Clara Amorim</strong>
-          <span>612 Tweets</span>
+          <strong> {user?.name} </strong>
+          <span> Tweets</span>
         </ProfileInfo>
       </Header>
 
@@ -38,6 +44,6 @@ function Main() {
       </BottomMenu>
     </Container>
   );
-};
+}
 
-export {Main};
+export { Main };

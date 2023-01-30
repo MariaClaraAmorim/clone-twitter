@@ -51,9 +51,12 @@ function MainUsers() {
   return (
     <Container>
       <Header>
+        <a href="/home">
+
         <button>
           <BackIcon />
         </button>
+        </a>
 
         <ProfileInfo>
           <strong>{users?.name}</strong>

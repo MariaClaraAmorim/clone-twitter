@@ -10,9 +10,6 @@ function Feed() {
       <Tab> Tweets </Tab>
       <Tweets>
         <Tweet />
-        <Tweet />
-        <Tweet />
-        <Tweet />
       </Tweets>
     </Container>
   );

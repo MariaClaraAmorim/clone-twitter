@@ -17,6 +17,7 @@ import {
   Avatar,
   ProfileData,
   ExitIcon,
+  SearchIcon,
 } from "./styles";
 import { useUserContext } from "@contexts/UserContext";
 
@@ -27,35 +28,55 @@ function MenuBar() {
     <Container>
       <Topside>
         {/* fill="#33A1F2" */}
-        <MenuButton>
-          <BsTwitter />
-        </MenuButton>
-        <MenuButton>
-          <HomeIcon />
-          <span>Página Inicial</span>
-        </MenuButton>
+        <a href="/home">
+          <MenuButton>
+            <BsTwitter />
+          </MenuButton>
+        </a>
 
-        <MenuButton>
-          <BellIcon />
-          <span>Notificações</span>
-        </MenuButton>
+        <a href="/home">
+          <MenuButton>
+            <HomeIcon />
+            <span>Página Inicial</span>
+          </MenuButton>
+        </a>
 
-        <MenuButton>
-          <EmailIcon />
-          <span>Mensagens</span>
-        </MenuButton>
+        <a href="/explore">
+          <MenuButton>
+          <SearchIcon />
+            <span>Explore</span>
+          </MenuButton>
+        </a>
 
-        <MenuButton>
-          <FavoriteIcon />
-          <span>Favoritados</span>
-        </MenuButton>
+        <a href="">
+          <MenuButton>
+            <BellIcon />
+            <span>Notificações</span>
+          </MenuButton>
+        </a>
 
+        <a href="/message">
+          <MenuButton>
+            <EmailIcon />
+            <span>Mensagens</span>
+          </MenuButton>
+        </a>
+
+
+        
+        <a href="">
+          <MenuButton>
+            <FavoriteIcon />
+            <span>Favoritados</span>
+          </MenuButton>
+        </a>
         {/* className="active" */}
-        <MenuButton>
-          <ProfileIcon />
-          <span>Perfil</span>
-        </MenuButton>
-
+        <a href="/profile">
+          <MenuButton>
+            <ProfileIcon />
+            <span>Perfil</span>
+          </MenuButton>
+        </a>
         <Button>
           <span>Tweetar</span>
         </Button>
