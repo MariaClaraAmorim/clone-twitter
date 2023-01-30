@@ -38,11 +38,6 @@ function LoginGoogle() {
         </Content>
       </Container>
 
-      <div>
-        <h1>{user?.name}</h1>
-        <h2>{user?.userName}</h2>
-        <img src={user?.photoURL} alt="profile" />
-      </div>
     </>
   );
 }
