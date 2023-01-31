@@ -1,25 +1,33 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 80%;
+  display: flex;
+  flex-direction: column;
+  width: min(601px, 100%);
+  padding: 1rem;
 
   @media (min-width: 500px) {
     border-left: 1px solid var(--outline);
     border-right: 1px solid var(--outline);
   }
+
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 `;
 export const Title = styled.h1`
-margin-left: 1rem;`;
+  margin-left: 1rem;
+`;
 
 export const Content = styled.div``;
 
 export const Profile = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  gap: 1rem;
-  padding: 8px 9px 9px 13px;
-  border-bottom: 1px solid var(--outline);
+  // display: flex;
+  // align-items: center;
+  // justify-content: space-around;
+  // gap: 1rem;
+  // padding: 8px 9px 9px 13px;
+  // border-bottom: 1px solid var(--outline);
 `;
 
 export const Ul = styled.ul`
@@ -74,21 +82,20 @@ export const Description = styled.p`
 `;
 
 export const ImageContent = styled.img`
-  margin-top: 12px;
   width: 100%;
+  cursor: pointer;
+  margin-top: 12px;
+  border-radius: 14px;
+  background: var(--outline);
   height: min(285px, max(175px, 41vw));
 
-  background: var(--outline);
-  border-radius: 14px;
-
-  cursor: pointer;
   &:hover {
     opacity: 0.7;
   }
 `;
 export const HeaderInfo = styled.div`
   display: flex;
-  justify-content : space-evenly;
+  justify-content: space-evenly;
   margin-top: 1rem;
   gap: 0.4rem;
 
@@ -112,3 +119,48 @@ export const HeaderInfo = styled.div`
 // export const Container = styled.div``;
 
 // export const Container = styled.div``;
+
+export const Botside = styled.div`
+display: flex;
+align-items: center;
+margin-top: 20px;
+gap: 1rem;
+`;
+
+export const ProfileData = styled.div`
+  display: flex;
+  gap: 2rem;
+  // display: none;
+
+  // @media (min-width: 1280px) {
+  //   display: flex;
+  //   flex-direction: column;
+
+  //   margin-left: 10px;
+  //   font-size: 14px;
+
+  //   > span {
+  //     color: var(--gray);
+  //   }
+  // }
+`;
+
+import { ExitToApp } from "../../styles/Icons";
+export const ExitIcon = styled(ExitToApp)`
+  display: none;
+
+  @media (min-width: 1280px) {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    color: var(--white);
+    margin-left: 30px;
+    cursor: pointer;
+
+    &:hover {
+      > path {
+        color: var(--like);
+      }
+    }
+  }
+`;

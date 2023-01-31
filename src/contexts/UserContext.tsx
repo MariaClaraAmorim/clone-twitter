@@ -11,6 +11,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 export interface TypeUser {
+  id: string;
   name: string;
   userName: string;
   photoURL: string;
@@ -63,6 +64,7 @@ function UserProvider({ children }: UserProviderProps) {
         const newUserName = `@${userName[0]}`;
 
         const data = {
+          id: user.uid,
           name: user.displayName ?? "",
           userName: newUserName,
           photoURL: user.photoURL ?? "",

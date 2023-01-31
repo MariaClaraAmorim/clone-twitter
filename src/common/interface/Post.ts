@@ -1,8 +1,12 @@
-interface Post {
+export interface Post {
   body: string;
-  id: number;
-  title: string;
-  userId: number;
+  id?: string;
+  title?: string;
+  userId: string;
 }
 
-export { Post };
+export interface Tweet {
+  body: string;
+  id?: string;
+  userId: string;
+}

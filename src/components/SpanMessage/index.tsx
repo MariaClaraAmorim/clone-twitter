@@ -18,6 +18,3 @@ function SpanMessage() {
 }
 
 export { SpanMessage };
-// Selecione uma mensagem
-// Escolha entre as conversas existentes,
-// inicie uma nova ou continue explorando.

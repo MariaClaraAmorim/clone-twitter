@@ -52,10 +52,9 @@ function MainUsers() {
     <Container>
       <Header>
         <a href="/home">
-
-        <button>
-          <BackIcon />
-        </button>
+          <button>
+            <BackIcon />
+          </button>
         </a>
 
         <ProfileInfo>
@@ -76,7 +75,7 @@ function MainUsers() {
         return <PostMessage {...post} />;
       })}
 
-<BottomMenu>
+      <BottomMenu>
         <a href="/home">
           <HomeIcon />
         </a>
@@ -88,7 +87,7 @@ function MainUsers() {
         <a href="/profile">
           <BellIcon />
         </a>
-        
+
         <a href="/message">
           <EmailIcon />
         </a>

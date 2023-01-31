@@ -40,10 +40,15 @@ export default createGlobalStyle`
   }
 
   textarea{
+    display: flex;
+    outline: none;
     border: 0;
     font-size: 1.4rem;
     width: 100%;
-    border-radius: 19.5px;
     resize: none;
+  }
+
+  svg{ 
+    cursor: pointer;
   }
 `;

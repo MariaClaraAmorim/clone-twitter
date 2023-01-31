@@ -28,10 +28,12 @@ function Tweet() {
 
   return (
     <Container>
-      <div>
-        <AiOutlineRetweet />
-        Você retweetou
-      </div>
+        <div>
+          {/* <AiOutlineRetweet /> */}
+          {isRetweeted ? 
+          
+          "Você retweetou"  : ""}
+        </div>
 
       <Body>
         <AvatarUser src={`${user?.photoURL}`} />
@@ -51,10 +53,8 @@ function Tweet() {
           <Icons>
             <Status>
               <FaRegComment />
-              18
             </Status>
             <Status>
-
               <button onClick={() => setIsRetweeted((state) => !state)}>
                 {isRetweeted ? (
                   <AiOutlineRetweet fill="var(--retweet)" />

@@ -1,14 +1,24 @@
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  DocumentData,
+  getDocs,
+  query,
+  QuerySnapshot,
+  where,
+} from "firebase/firestore";
 import { db } from "./firebase";
 
 type Tweet = {
-  text: string;
+  body: string;
+  id?: string;
+  userId: string;
 };
 
 function isTweet(data: unknown): data is Tweet {
   if (!data) return false;
   if (typeof data !== "object") return false;
-  if ("text" in data) return true;
+  if ("body" in data) return true;
   return false;
 }
 
@@ -21,8 +31,21 @@ export async function sendTweet(data: Tweet) {
 export async function getTweets() {
   const tweetsCol = collection(db, "tweets");
   const tweetSnapshot = await getDocs(tweetsCol);
+  return extractTweetsFromSnapshot(tweetSnapshot);
+}
 
-  const tweets = tweetSnapshot.docs.map((doc) => {
+export async function getTweetsByUserId(id: string) {
+  const tweetsCol = collection(db, "tweets");
+
+  const tweetsQuery = query(tweetsCol, where("userId", "==", id));
+
+  const tweetSnapshot = await getDocs(tweetsQuery);
+
+  return extractTweetsFromSnapshot(tweetSnapshot);
+}
+
+function extractTweetsFromSnapshot(snapshot: QuerySnapshot<DocumentData>) {
+  const tweets = snapshot.docs.map((doc) => {
     const data = doc.data();
 
     if (!isTweet(data)) return null;

@@ -1,25 +1,25 @@
-import React from "react";
+import { useState } from "react";
 
 import Button from "../Button";
 
 import { BsTwitter } from "react-icons/bs";
 
+import { useUserContext } from "@contexts/UserContext";
 import {
-  Container,
-  Topside,
-  MenuButton,
-  HomeIcon,
+  Avatar,
   BellIcon,
+  Botside,
+  Container,
   EmailIcon,
+  ExitIcon,
+  HomeIcon,
+  MenuButton,
+  ProfileData,
   // FavoriteIcon,
   ProfileIcon,
-  Botside,
-  Avatar,
-  ProfileData,
-  ExitIcon,
   SearchIcon,
+  Topside
 } from "./styles";
-import { useUserContext } from "@contexts/UserContext";
 
 function MenuBar() {
   const { user, signOut } = useUserContext();
@@ -69,7 +69,6 @@ function MenuBar() {
           </MenuButton>
         </a>*/}
 
-        {/* className="active" */}
         <a href="/profile">
           <MenuButton>
             <ProfileIcon />

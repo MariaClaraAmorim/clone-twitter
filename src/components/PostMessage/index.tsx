@@ -51,12 +51,10 @@ function PostMessage({ body, userId, id }: Post) {
   const [isLiked, setIsLiked] = useState(false);
   const [isRetweeted, setIsRetweeted] = useState(false);
 
-  
   return (
     <Container>
       <div>
-        <AiOutlineRetweet />
-        Você retweetou
+        {isRetweeted ? "Você retweetou" : ""}
       </div>
 
       <Body>
@@ -68,9 +66,7 @@ function PostMessage({ body, userId, id }: Post) {
         <Content>
           <Header>
             <strong> {users?.name}</strong>
-            <span>
-              {users?.email}
-            </span>
+            <span>{users?.email}</span>
             <Dot />
             <time>02 de jun</time>
           </Header>
@@ -80,25 +76,24 @@ function PostMessage({ body, userId, id }: Post) {
           <Icons>
             <Status>
               <FaRegComment />
-              18
             </Status>
             <Status>
-            <button onClick={() => setIsRetweeted((state) => !state)}>
-              {isRetweeted ? (
-                <AiOutlineRetweet fill="var(--retweet)" />
-              ) : (
-                <AiOutlineRetweet />
-              )}
-              {isRetweeted ? 1 : ""}
-            </button>
-          </Status>
+              <button onClick={() => setIsRetweeted((state) => !state)}>
+                {isRetweeted ? (
+                  <AiOutlineRetweet fill="var(--retweet)" />
+                ) : (
+                  <AiOutlineRetweet />
+                )}
+                {isRetweeted ? 1 : ""}
+              </button>
+            </Status>
 
-          <Status>
-            <button onClick={() => setIsLiked((state) => !state)}>
-              {isLiked ? <FcLike /> : <AiOutlineHeart />}
-              {isLiked ? 1 : ""}
-            </button>
-          </Status>
+            <Status>
+              <button onClick={() => setIsLiked((state) => !state)}>
+                {isLiked ? <FcLike /> : <AiOutlineHeart />}
+                {isLiked ? 1 : ""}
+              </button>
+            </Status>
           </Icons>
         </Content>
       </Body>

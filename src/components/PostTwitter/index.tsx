@@ -7,6 +7,7 @@ import { InterfacePerfil } from "../../common/interface/InterfacePerfil";
 import { Post } from "../../common/interface/Post";
 import { Avatar } from "../MainFeed/styles";
 import {
+  Container,
   Body,
   Content,
   Description,
@@ -40,48 +41,60 @@ function PostTwitter({ body, userId, id }: Post) {
   const [isRetweeted, setIsRetweeted] = useState(false);
 
   return (
-    <Body>
-      <a href={"/user/" + userId}>
-        <Avatar
-          src={"https://avatars.dicebear.com/api/open-peeps/" + userId + ".svg"}
-          alt="Imagem avatar"
-        />
-      </a>
+    <Container>
+      {isRetweeted ? (
+        <div>
+          <AiOutlineRetweet />
+          <p>Você retweetou</p>
+        </div>
+      ) : (
+        ""
+      )}
+      <Body>
+        <a href={"/user/" + userId}>
+          <Avatar
+            src={
+              "https://avatars.dicebear.com/api/open-peeps/" + userId + ".svg"
+            }
+            alt="Imagem avatar"
+          />
+        </a>
 
-      <Content>
-        <HeaderInfo>
-          <strong>{users?.name}</strong>
-          <span>{users?.email}</span>
-          <Dot />
-          <time>23 jan</time>
-        </HeaderInfo>
-        <Description> {body} </Description>
-        <ImageContent src={thumbnailUrl} />
-        <Icons>
-          <Status>
-            <FaRegComment />
-          </Status>
+        <Content>
+          <HeaderInfo>
+            <strong>{users?.name}</strong>
+            <span>{users?.email}</span>
+            <Dot />
+            <time>23 jan</time>
+          </HeaderInfo>
+          <Description> {body} </Description>
+          <ImageContent src={thumbnailUrl} />
+          <Icons>
+            <Status>
+              <FaRegComment />
+            </Status>
 
-          <Status>
-            <button onClick={() => setIsRetweeted((state) => !state)}>
-              {isRetweeted ? (
-                <AiOutlineRetweet fill="var(--retweet)" />
-              ) : (
-                <AiOutlineRetweet />
-              )}
-              {isRetweeted ? 1 : ""}
-            </button>
-          </Status>
+            <Status>
+              <button onClick={() => setIsRetweeted((state) => !state)}>
+                {isRetweeted ? (
+                  <AiOutlineRetweet fill="var(--retweet)" />
+                ) : (
+                  <AiOutlineRetweet />
+                )}
+                {isRetweeted ? 1 : ""}
+              </button>
+            </Status>
 
-          <Status>
-            <button onClick={() => setIsLiked((state) => !state)}>
-              {isLiked ? <FcLike /> : <AiOutlineHeart />}
-              {isLiked ? 1 : ""}
-            </button>
-          </Status>
-        </Icons>{" "}
-      </Content>
-    </Body>
+            <Status>
+              <button onClick={() => setIsLiked((state) => !state)}>
+                {isLiked ? <FcLike /> : <AiOutlineHeart />}
+                {isLiked ? 1 : ""}
+              </button>
+            </Status>
+          </Icons>{" "}
+        </Content>
+      </Body>
+    </Container>
   );
 }
 export { PostTwitter };

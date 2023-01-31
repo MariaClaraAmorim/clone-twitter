@@ -23,9 +23,7 @@ function Explore() {
           <nav>
             <Ul>
               <li>Para você</li>
-
               <Li className="active">Assuntos do Momento</Li>
-              <li>Notícias</li>
               <li>Esportes</li>
               <li>Entretenimento</li>
             </Ul>

@@ -1,0 +1,9 @@
+Sem pagina:
+favoritos, notificação
+
+
+criar modais: 
+Editar perfil, Twettar
+
+
+Retornar tweets na tela
