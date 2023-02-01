@@ -3,6 +3,7 @@ import {
   collection,
   DocumentData,
   getDocs,
+  orderBy,
   query,
   QuerySnapshot,
   where,
@@ -13,6 +14,7 @@ type Tweet = {
   body: string;
   id?: string;
   userId: string;
+  created_at: string;
 };
 
 function isTweet(data: unknown): data is Tweet {
@@ -37,7 +39,11 @@ export async function getTweets() {
 export async function getTweetsByUserId(id: string) {
   const tweetsCol = collection(db, "tweets");
 
-  const tweetsQuery = query(tweetsCol, where("userId", "==", id));
+  const tweetsQuery = query(
+    tweetsCol,
+    where("userId", "==", id)
+    // orderBy("created_at", "desc")
+  );
 
   const tweetSnapshot = await getDocs(tweetsQuery);
 
