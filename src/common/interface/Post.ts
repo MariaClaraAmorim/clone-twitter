@@ -9,4 +9,5 @@ export interface Tweet {
   body: string;
   id?: string;
   userId: string;
+  created_at: string;
 }
