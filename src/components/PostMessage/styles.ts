@@ -11,12 +11,10 @@ export const Container = styled.div`
   max-width: 100%;
 `;
 
-export const Retweeted = styled.img`
+export const Retweeted = styled.div`
   display: flex;
   align-items: center;
-  font-size: 13px;
-  color: var(--gray);
-`;
+ `;
 
 export const Body = styled.div`
   display: flex;
@@ -46,7 +44,8 @@ export const Header = styled.div`
   align-items: center;
   font-size: 15px;
   white-space: nowrap;
-
+  flex-wrap: wrap;
+  
   > strong {
     margin-right: 5px;
   }

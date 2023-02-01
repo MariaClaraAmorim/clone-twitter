@@ -140,6 +140,7 @@ export const HeaderInfo = styled.div`
   align-items: center;
   font-size: 15px;
   white-space: nowrap;
+  flex-wrap: wrap;
 
   > strong {
     margin-right: 5px;
@@ -286,5 +287,5 @@ export const EmailIcon = styled(Email)`
 
 export const Box = styled.div`
   display: flex;
-  gap:1rem;
+  gap: 1rem;
 `;

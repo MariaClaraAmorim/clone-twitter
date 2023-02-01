@@ -137,6 +137,7 @@ export const Botside = styled.div`
 
   display: flex;
   align-items: center;
+  justify-content: center;
 `;
 
 export const Avatar = styled.img`
@@ -166,7 +167,7 @@ export const ProfileData = styled.div`
 `;
 
 export const ExitIcon = styled(ExitToApp)`
-  display: none;
+  // display: none;
 
   @media (min-width: 1280px) {
     display: inline-block;

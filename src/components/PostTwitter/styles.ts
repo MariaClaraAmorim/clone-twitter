@@ -1,8 +1,11 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-`;
+export const Container = styled.div``;
 
+export const Retweeted = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
 export const Body = styled.div`
   display: flex;
@@ -19,6 +22,7 @@ export const HeaderInfo = styled.div`
   align-items: center;
   font-size: 15px;
   white-space: nowrap;
+  flex-wrap: wrap;
 
   > strong {
     margin-right: 5px;
@@ -96,7 +100,6 @@ export const Status = styled.div`
   align-items: center;
 
   font-size: 14px;
-
 
   > svg {
     margin-right: 5px;
