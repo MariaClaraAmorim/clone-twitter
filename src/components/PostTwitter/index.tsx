@@ -8,6 +8,7 @@ import { Post } from "../../common/interface/Post";
 import { Avatar } from "../MainFeed/styles";
 import {
   Container,
+  Retweeted,
   Body,
   Content,
   Description,
@@ -43,10 +44,10 @@ function PostTwitter({ body, userId, id }: Post) {
   return (
     <Container>
       {isRetweeted ? (
-        <div>
+        <Retweeted>
           <AiOutlineRetweet />
           <p>Você retweetou</p>
-        </div>
+        </Retweeted>
       ) : (
         ""
       )}

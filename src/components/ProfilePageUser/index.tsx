@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { InterfacePerfil } from "../../common/interface/InterfacePerfil";
-import { Post } from "../../common/interface/Post";
+import { UserType } from "@common/interface/User";
 
 import {
   Avatar,
@@ -12,57 +10,34 @@ import {
   ProfileData,
 } from "./styles";
 
-function ProfilePageUser({ userId, body }: Post) {
-  const [posts, setPosts] = useState<Post[]>([]);
+interface Props {
+  user: UserType;
+}
 
-  async function getPosts() {
-    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
-
-    setPosts(await response.json());
-  }
-
-  useEffect(() => {
-    getPosts();
-  }, []);
-
-  const [users, setUsers] = useState<InterfacePerfil>();
-
-  async function getInfoUser() {
-    const response = await fetch(
-      "https://jsonplaceholder.typicode.com/users/" + userId
-    );
-
-    setUsers(await response.json());
-  }
-
-  useEffect(() => {
-    getInfoUser();
-  }, []);
-
+function ProfilePageUser({ user }: Props) {
   return (
     <Container>
       <Banner>
-        <Avatar
-          src={"https://avatars.dicebear.com/api/open-peeps/" + userId + ".svg"}
-          alt="Imagem avatar"
-        />
+        <Avatar src={user.photoURL} alt={user.name} />
       </Banner>
 
       <ProfileData>
-        <h1>{users?.name}</h1>
+        <h1>{user.name}</h1>
 
-        <strong>{body}</strong>
+        <i>{user.userName}</i>
 
-        {/* <ul>
+        <strong>{user.bio}</strong>
+
+        <ul>
           <li>
             <LocationIcon />
             Barreiras, Bahia
           </li>
           <li>
             <CakeIcon />
-            Nascido(a) em 22 de novembro de 2002
+            Nascido(a) em {new Date(user.birth ?? "").toLocaleDateString()}
           </li>
-        </ul> */}
+        </ul>
 
         <Followage>
           <span>

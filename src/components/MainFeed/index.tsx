@@ -1,9 +1,9 @@
 import Button from "@components/Button";
+import { Tweet } from "@components/Tweet";
 import { useUserContext } from "@contexts/UserContext";
-import { getTweets, getTweetsByUserId, sendTweet } from "@services/tweets";
-import { FormEvent, SetStateAction, useEffect, useState } from "react";
-import { Post, Tweet } from "../../common/interface/Post";
-import { PostTwitter } from "../PostTwitter";
+import { getTweets, sendTweet } from "@services/tweets";
+import { FormEvent, useEffect, useState } from "react";
+import { Tweet as TweetType } from "../../common/interface/Post";
 import {
   Avatar,
   BellIcon,
@@ -22,49 +22,32 @@ import {
 
 function MainFeed() {
   const { user } = useUserContext();
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [tweets, setTweets] = useState<Tweet[]>([]);
+  const [tweets, setTweets] = useState<TweetType[]>([]);
+  const [att, setAtt] = useState(false);
+  const [contentTweet, setContentTweet] = useState("");
 
-  async function getPosts() {
-    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
-
-    setPosts(await response.json());
-  }
-
-  async function getMyTweets() {
-    const response = await getTweetsByUserId(user?.id ?? "");
+  async function getAllTweets() {
+    const response = await getTweets();
 
     setTweets(response);
   }
 
-  useEffect(() => {}, []);
-
   useEffect(() => {
-    getMyTweets();
-    getPosts();
-  }, []);
-
-  // const [editorValue, setEditorValue] = useState("");
-
-  // const handleEditorValueChange = (e: {
-  //   target: { value: SetStateAction<string> };
-  // }) => {
-  //   setEditorValue(e.target.value);
-  // };
+    getAllTweets();
+  }, [att]);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const formData = new FormData(e.currentTarget);
-
-    const tweetFormValue = formData.get("tweet");
-
-    if (!tweetFormValue) return;
+    if (!contentTweet) return;
 
     await sendTweet({
-      body: tweetFormValue.toString(),
-      userId: user?.id ?? "",
+      body: contentTweet,
+      userId: user?.userId ?? "",
+      created_at: new Date().toLocaleString(),
     });
+
+    setContentTweet("");
   };
 
   return (
@@ -80,15 +63,27 @@ function MainFeed() {
           </nav>
         </ProfileInfo>
       </Header>
+
       <Profile>
         <form onSubmit={handleSubmit}>
           <Box>
             <Avatar src={`${user?.photoURL}`} alt="Imagem avatar" />
             <SearchWrapper>
-              <textarea name="tweet" placeholder="O que está acontecendo?" />
+              <textarea
+                name="tweet"
+                placeholder="O que está acontecendo?"
+                value={contentTweet}
+                onChange={(e: any) => {
+                  const value = e.target.value;
+
+                  setContentTweet(value);
+                }}
+              />
             </SearchWrapper>
           </Box>
-          <Button type="submit">Tweetar</Button>
+          <Button type="submit" onClick={() => setAtt((state) => !state)}>
+            Tweetar
+          </Button>
         </form>
       </Profile>
 
@@ -96,11 +91,7 @@ function MainFeed() {
         tweet.id = Math.floor(Math.random() * 100000).toString();
         tweet.userId = tweet.userId;
 
-        return <PostTwitter key={index} {...tweet} />;
-      })}
-
-      {posts.map((post, index) => {
-        return <PostTwitter key={index} {...post} />;
+        return <Tweet key={index} tweet={tweet} />;
       })}
 
       <BottomMenu>

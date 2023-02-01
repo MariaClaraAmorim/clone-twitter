@@ -6,6 +6,7 @@ import { Post } from "../../common/interface/Post";
 import React from "react";
 import {
   Container,
+  Retweeted,
   Body,
   Avatar,
   AvatarUser,
@@ -53,9 +54,14 @@ function PostMessage({ body, userId, id }: Post) {
 
   return (
     <Container>
-      <div>
-        {isRetweeted ? "Você retweetou" : ""}
-      </div>
+      {isRetweeted ? (
+        <Retweeted>
+          <AiOutlineRetweet />
+          <p>Você retweetou</p>
+        </Retweeted>
+      ) : (
+        ""
+      )}
 
       <Body>
         <AvatarUser

@@ -1,52 +1,84 @@
-import { useUserContext } from "@contexts/UserContext";
-import React, { useState } from "react";
+import { Tweet as TweetType } from "@common/interface/Post";
+import { UserType } from "@common/interface/User";
+import { getUserByUserId } from "@services/user";
+import { useEffect, useState } from "react";
 
-import { AiOutlineRetweet, AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineHeart, AiOutlineRetweet } from "react-icons/ai";
 
 import { FaRegComment } from "react-icons/fa";
 import { FcLike } from "react-icons/fc";
 
 import {
-  Container,
-  Body,
-  Avatar,
   AvatarUser,
+  Body,
+  Container,
+  Retweeted,
   Content,
-  Header,
-  Dot,
   Description,
-  ImageContent,
+  Dot,
+  Header,
   Icons,
+  ImageContent,
   Status,
 } from "./styles";
 
-function Tweet() {
-  const { user } = useUserContext();
+interface TweetProps {
+  tweet: TweetType;
+}
 
+function Tweet({ tweet }: TweetProps) {
   const [isLiked, setIsLiked] = useState(false);
   const [isRetweeted, setIsRetweeted] = useState(false);
+  const [users, setUsers] = useState<UserType[]>([]);
+
+  async function getUser() {
+    const response = await getUserByUserId(tweet.userId);
+
+    setUsers(response);
+  }
+
+  useEffect(() => {
+    getUser();
+  }, [tweet.userId]);
 
   return (
     <Container>
-        <div>
-          {/* <AiOutlineRetweet /> */}
-          {isRetweeted ? 
-          
-          "Você retweetou"  : ""}
-        </div>
+      <div>
+        {isRetweeted ? (
+          <Retweeted>
+            <AiOutlineRetweet />
+            <p>Você retweetou</p>
+          </Retweeted>
+        ) : (
+          ""
+        )}
+      </div>
 
       <Body>
-        <AvatarUser src={`${user?.photoURL}`} />
+        {users.length ? (
+          <a href={`/user/${users[0].userId}`}>
+            <AvatarUser src={users[0].photoURL} alt={users[0].name} />
+          </a>
+        ) : (
+          ""
+        )}
 
         <Content>
           <Header>
-            <strong>{user?.name}</strong>
-            <span>{user?.userName}</span>
+            {users.length ? (
+              <a href={`/user/${users[0].userId}`}>
+                <strong>{users[0].name}</strong>
+                <span>{users[0].userName}</span>
+              </a>
+            ) : (
+              ""
+            )}
+
             <Dot />
-            <time>02 de jun</time>
+            <p>{tweet.created_at}</p>
           </Header>
 
-          <Description> 🚀 </Description>
+          <Description>{tweet.body}</Description>
 
           <ImageContent src="https://www.gerarmemes.com.br/uploads/galeria/meme-611-meme-pica-pau-cataratas-gerador-de-memes.jpg" />
 
@@ -54,6 +86,7 @@ function Tweet() {
             <Status>
               <FaRegComment />
             </Status>
+
             <Status>
               <button onClick={() => setIsRetweeted((state) => !state)}>
                 {isRetweeted ? (

@@ -18,8 +18,9 @@ import {
   // FavoriteIcon,
   ProfileIcon,
   SearchIcon,
-  Topside
+  Topside,
 } from "./styles";
+import { Logout } from "@components/Logout";
 
 function MenuBar() {
   const { user, signOut } = useUserContext();
@@ -82,7 +83,7 @@ function MenuBar() {
 
       <Botside>
         <Avatar src={`${user?.photoURL}`} alt={`${user?.name}`} />
-
+        {/* <Logout /> */}
         <ProfileData>
           <strong>{user?.name}</strong>
           <span>{user?.userName}</span>

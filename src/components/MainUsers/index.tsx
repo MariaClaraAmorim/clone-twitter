@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { UserType } from "@common/interface/User";
+import { Tweet } from "@components/Tweet";
+import { getTweetsByUserId } from "@services/tweets";
+import { getUserByUserId } from "@services/user";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { InterfacePerfil } from "../../common/interface/InterfacePerfil";
-import { Post } from "../../common/interface/Post";
-import { PostMessage } from "../PostMessage";
+import { Tweet as TweetType } from "../../common/interface/Post";
 
 import { ProfilePageUser } from "../ProfilePageUser";
 
@@ -19,33 +21,29 @@ import {
 } from "./styles";
 
 function MainUsers() {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [users, setUsers] = useState<InterfacePerfil>();
-
   const { userId } = useParams();
 
-  async function getInfoUser() {
-    const response = await fetch(
-      "https://jsonplaceholder.typicode.com/users/" + userId
-    );
+  const [tweets, setTweets] = useState<TweetType[]>([]);
+  const [users, setUsers] = useState<UserType[]>([]);
 
-    setUsers(await response.json());
+  async function getUser() {
+    const response = await getUserByUserId(userId ?? "");
+
+    setUsers(response);
   }
 
   useEffect(() => {
-    getInfoUser();
-  }, []);
+    getUser();
+  }, [userId]);
 
-  async function getPosts() {
-    const response = await fetch(
-      "https://jsonplaceholder.typicode.com/posts?userId=" + userId
-    );
+  async function getTweetsByIdUser() {
+    const response = await getTweetsByUserId(userId ?? "");
 
-    setPosts(await response.json());
+    setTweets(response);
   }
 
   useEffect(() => {
-    getPosts();
+    getTweetsByIdUser();
   }, []);
 
   return (
@@ -58,21 +56,16 @@ function MainUsers() {
         </a>
 
         <ProfileInfo>
-          <strong>{users?.name}</strong>
+          {users.length ? <strong>{users[0].name}</strong> : ""}
 
-          <span>612 Tweets</span>
+          <span>{tweets.length} Tweet(s)</span>
         </ProfileInfo>
       </Header>
 
-      <ProfilePageUser
-        body={"Essa é a minha bio xoxa e capenga"}
-        id={Number(userId)}
-        title={""}
-        userId={Number(userId)}
-      />
+      {users.length ? <ProfilePageUser user={users[0]} /> : ""}
 
-      {posts.map((post) => {
-        return <PostMessage {...post} />;
+      {tweets.map((tweet, index) => {
+        return <Tweet tweet={tweet} key={index} />;
       })}
 
       <BottomMenu>

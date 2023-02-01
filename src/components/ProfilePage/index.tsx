@@ -36,7 +36,7 @@ function ProfilePage() {
           </li>
           <li>
             <CakeIcon />
-            Nascido(a) em 22 de novembro de 2002
+           Nascido(a) em {new Date(user.birth ?? "").toLocaleDateString()}
           </li>
         </ul> */}
 

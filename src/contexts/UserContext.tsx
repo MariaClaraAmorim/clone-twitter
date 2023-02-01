@@ -1,5 +1,7 @@
+import { UserType } from "@common/interface/User";
 import { googleAuthProvider } from "@config/index";
 import { auth } from "@services/firebase";
+import { getUserByUserId, createdUser } from "@services/user";
 import { signInWithPopup } from "firebase/auth";
 import {
   createContext,
@@ -11,11 +13,11 @@ import {
 import { useNavigate } from "react-router-dom";
 
 export interface TypeUser {
-  id: string;
+  userId: string;
   name: string;
   userName: string;
   photoURL: string;
-  isLoggedIn: boolean;
+  isLoggedIn?: boolean;
 }
 
 type UserProviderProps = {
@@ -46,6 +48,22 @@ function isValidUser(data: unknown): data is TypeUser {
 
 const AUTH_LS_KEY = "auth";
 
+async function registerUser(user: UserType) {
+  const isUser = await getUserByUserId(user.userId);
+
+  if (!isUser[0]) {
+    await createdUser({
+      userId: user.userId,
+      name: user.name,
+      userName: user.userName,
+      photoURL: user.photoURL,
+      created_at: new Date().toDateString(),
+      bio: "",
+      birth: "",
+    });
+  }
+}
+
 function UserProvider({ children }: UserProviderProps) {
   const recoveredUser = JSON.parse(localStorage.getItem(AUTH_LS_KEY) ?? "{}");
 
@@ -64,12 +82,14 @@ function UserProvider({ children }: UserProviderProps) {
         const newUserName = `@${userName[0]}`;
 
         const data = {
-          id: user.uid,
+          userId: user.uid,
           name: user.displayName ?? "",
           userName: newUserName,
           photoURL: user.photoURL ?? "",
           isLoggedIn: true,
         };
+
+        registerUser(data);
 
         setUser(data);
 
