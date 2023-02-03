@@ -24,9 +24,15 @@ function isTweet(data: unknown): data is Tweet {
   return false;
 }
 
-export async function sendTweet(data: Tweet) {
+export async function sendTweet(data: Omit<Tweet, "created_at">) {
   const tweetsCol = collection(db, "tweets");
-  const docRef = await addDoc(tweetsCol, data);
+  
+  const tweet: Tweet = {
+    ...data,
+    created_at: new Date().toISOString()
+  }
+
+  const docRef = await addDoc(tweetsCol, tweet);
   console.log("Tweet written with ID: ", docRef.id);
 }
 
@@ -47,7 +53,16 @@ export async function getTweetsByUserId(id: string) {
 
   const tweetSnapshot = await getDocs(tweetsQuery);
 
-  return extractTweetsFromSnapshot(tweetSnapshot);
+  const tweets =  extractTweetsFromSnapshot(tweetSnapshot);
+
+  return tweets.sort((a, b) => {
+    const aCreatedAt = new Date(a.created_at).getTime()
+    const bCreatedAt = new Date(b.created_at).getTime()
+  
+    if (aCreatedAt - bCreatedAt) return 1;
+    if (aCreatedAt === bCreatedAt) return 0;
+    return -1;
+  })
 }
 
 function extractTweetsFromSnapshot(snapshot: QuerySnapshot<DocumentData>) {

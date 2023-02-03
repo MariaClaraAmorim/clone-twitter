@@ -44,7 +44,6 @@ function MainFeed() {
     await sendTweet({
       body: contentTweet,
       userId: user?.userId ?? "",
-      created_at: new Date().toLocaleString(),
     });
 
     setContentTweet("");
